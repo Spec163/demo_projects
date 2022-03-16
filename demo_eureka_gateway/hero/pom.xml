@@ -10,6 +10,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <javadoc.build.version>3.3.1</javadoc.build.version>
+    </properties>
+
     <artifactId>hero</artifactId>
 
     <dependencies>
@@ -36,4 +40,25 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin> <!-- todo: mode to parent dependency module-->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.build.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
